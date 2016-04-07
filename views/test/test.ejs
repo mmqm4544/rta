@@ -1,0 +1,73 @@
+<script src="/js/dependencies/jquery.js"></script>
+<script src="/js/dependencies/plotly.js"></script>
+
+<div id="tester" style="width:600px;height:250px;"></div>
+
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			url:'listAllCollections',
+			success: function(data){
+				var select = $('<select id="myCombo">').appendTo($('#tester'));
+				data.forEach(function(d){
+					$('<option>'+d+'</option>').appendTo(select);
+				});
+				
+				$('#myCombo').change(function(){
+					var collectionName =  $(this).children('option:selected').val();
+					$.ajax({
+						url:'listAllDataInCollection',
+						data: {'collectionName' : collectionName},
+						success: function(data){
+							var columnNames = [];
+							for(c in data[0]){
+								columnNames.push(c);
+							}
+							$('#mytable').remove();
+							var table = $("<table id='mytable' border='1'>").appendTo($('#tester'));
+							var tr = $('<tr>').appendTo(table);
+							columnNames.forEach(function(c){
+								var td = $('<td>' + c + '</td>').appendTo(tr);	
+							});
+							
+							data.forEach(function(d){
+								var tr = $('<tr>').appendTo(table);
+								columnNames.forEach(function(c){
+									var td = $('<td>' + d[c] + '</td>').appendTo(tr);	
+								});
+							});
+						},
+					});	
+				});
+			}
+		});
+	
+		
+	});
+	
+	
+	var listAllDataInCollection = function(){
+		$.ajax({
+			url:'listAllDataInCollection',
+			success: function(data){
+				var columnNames = [];
+				for(c in data[0]){
+					columnNames.push(c);
+				}
+				
+				var table = $("<table border='1'>").appendTo($('#tester'));
+				var tr = $('<tr>').appendTo(table);
+				columnNames.forEach(function(c){
+					var td = $('<td>' + c + '</td>').appendTo(tr);	
+				});
+				
+				data.forEach(function(d){
+					var tr = $('<tr>').appendTo(table);
+					columnNames.forEach(function(c){
+						var td = $('<td>' + d[c] + '</td>').appendTo(tr);	
+					});
+				});
+			},
+		});		
+	}
+</script>
