@@ -19,7 +19,7 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
         $('<option>' + d + '</option>').appendTo(select);
       });
       select.selectmenu({
-        width: 50
+        width: 100
       });
       return select;
     },
@@ -89,7 +89,15 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
         y: data.y,
         type: type
       }];
-      plotly.newPlot('chart', d);
+      plotly.newPlot('dashboard_row_0_col_0', d);
+      plotly.newPlot('dashboard_row_0_col_1', d);
+      plotly.newPlot('dashboard_row_0_col_2', d);
+      plotly.newPlot('dashboard_row_1_col_0', d);
+      plotly.newPlot('dashboard_row_1_col_1', d);
+      plotly.newPlot('dashboard_row_1_col_2', d);
+      plotly.newPlot('dashboard_row_2_col_0', d);
+      plotly.newPlot('dashboard_row_2_col_1', d);
+      plotly.newPlot('dashboard_row_2_col_2', d);
     },
 
     drawPieChart: function(data) {
@@ -99,7 +107,7 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
         type: 'pie'
       }];
       var layout = {};
-      plotly.newPlot('chart', data, layout);
+      plotly.newPlot('dashboard_row_0_col_0', data, layout);
     },
 
     drawBubbleChart: function(d) {
@@ -116,7 +124,7 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
         title: '',
         showlegend: false
       };
-      plotly.newPlot('chart', data, layout);
+      plotly.newPlot('dashboard_row_0_col_0', data, layout);
     }
   }
 });

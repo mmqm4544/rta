@@ -35,37 +35,41 @@ module.exports.routes = {
 	'/': {
 		view: 'test/main'
 	},
-  
+
+	'/dashboard':{
+		view: 'test/dashboard'
+	},
+
 	/*'get /getAll':{
 	  controller: 'TestController',
       action: 'getAll'
 	},
-	
+
 	'get /listAllDataInCollection':{
 		controller: 'TestController',
 		action: 'listAllDataInCollection'
 	},
-	
+
 	'get /listAllDatabases':{
 		controller: 'TestController',
 		action: 'listAllDatabases'
 	},
-	
+
 	'get /listAllCollections':{
 		controller: 'TestController',
 		action: 'listAllCollections'
 	},*/
-	
+
 	'get /prepareEditModel': {
 		controller: 'MysqltestController',
 		action: 'prepareEditModel'
 	},
-	
+
 	'get /queryData': {
 		controller: 'MysqltestController',
 		action: 'queryData'
 	},
-	
+
 	/*'get queryPreviewData': {
 		controller: 'MysqltestController',
 		action: 'queryPreviewData'
