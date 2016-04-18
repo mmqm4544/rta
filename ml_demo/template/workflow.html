@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Workflow Demo</title>
+    <link rel="stylesheet" href="/static/jquery-ui.min.css">
+    <link rel="stylesheet" href="/static/workflow.css">
+    <script src="/static/jquery-1.10.2.js"></script>
+    <script src="/static/jquery-ui.js"></script>
+    <script src="/static/workflow.js"></script>
+  </head>
+  <body>
+    <div id="control">
+      <button id="train">Train</button>
+      <button id="predict">Predict</button>
+    </div>
+    <div id="panel" class="ui-widget-content ui-state-default">
+      <div id="inputBox" class="box">
+	<span class="placeholder">Add input data here</span>
+      </div>
+      <div class="arrow-right"></div>
+      <div id="modelBox" class="box">
+	<span class="placeholder">Add model here</span>
+      </div>
+      <div class="arrow-right"></div>
+      <div id="outputBox" class="box">
+	<span class="placeholder">Show output data here</span>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div id="workflow" class="ui-state-default">
+      <div class="container">
+	<h1 class="ui-widget-header">Input</h1>
+	<div id="input">
+	  <h2><a href="#">Table</a></h2>
+	  <div>
+	    <ul>
+	      <div><li tableName="iris">iris</li></div>
+	      <div><li tableName="stock">stock</li></div>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+      <div class="container">
+	<h1 class="ui-widget-header">Model</h1>
+	<div id="model">
+	  <h2><a href="#">Classification</a></h2>
+	  <div id="classification">
+	    <ul>
+	      <div><li category="classification" model="svm">Support Vector Machine</li></div>
+	    </ul>
+	  </div>
+	  <h2><a href="#">Regression</a></h2>
+	  <div id="regression">
+	    <ul>
+	      <div><li category="regression" model="lr">Linear Regression</li></div>
+	    </ul>
+	  </div>
+	  <h2><a href="#">Clustering</a></h2>
+	  <div id="clustering">
+	    <ul>
+	      <div><li category="clustering" model="kmeans">K-Means</li></div>
+	    </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </body>
+</html>
