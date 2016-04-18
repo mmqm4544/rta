@@ -4,7 +4,7 @@ html{
 }
 
 body{
-	height:95%;
+	height:auto;
 }
 
 .main{
@@ -27,8 +27,4 @@ body{
 	border:1px solid green;
 	display:inline-block;
 	vertical-align: top;
-}
-
-.draw-button{
-	font-size: 30px;
 }
