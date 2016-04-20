@@ -1,0 +1,9 @@
+define(["jquery", "plotly", "jqueryui", "require"], function($, Plotly, jqueryui, require) {
+  return {
+    draw: function(renderTo) {
+
+    }
+  }
+})
+width: $("#" + renderTo).width(),
+height: $("#" + renderTo).height()

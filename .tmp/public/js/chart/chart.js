@@ -19,7 +19,7 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
         $('<option>' + d + '</option>').appendTo(select);
       });
       select.selectmenu({
-        width: 100
+        width: 50
       });
       return select;
     },
@@ -61,21 +61,16 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
 
     drawChart: function(data) {
       var me = this;
-      // var type = $('#div_chart_type').val();
-      me.drawChartByType(data, 'bar');
-      me.drawChartByType(data, 'line');
-      me.drawChartByType(data, 'pie');
-      me.drawChartByType(data, 'bubble');
+      var type = $('#div_chart_type').val();
+      me.drawChartByType(data, type);
     },
 
     drawChartByType: function(data, type) {
       var me = this;
       switch (type) {
         case 'bar':
-          me.drawBarChart(data, type);
-          break;
         case 'line':
-          me.drawLineChart(data, type);
+          me.drawBarLineChart(data, type);
           break;
         case 'pie':
           me.drawPieChart(data);
@@ -88,36 +83,13 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
       }
     },
 
-    drawLineChart: function(data, type) {
+    drawBarLineChart: function(data, type) {
       var d = [{
         x: data.x,
         y: data.y,
         type: type
       }];
-
-      var layout = {
-        showlegend: false
-      };
-
-      plotly.newPlot('dashboard_row_0_col_1', d, layout, {
-        displayModeBar: false
-      });
-    },
-
-    drawBarChart: function(data, type) {
-      var d = [{
-        x: data.x,
-        y: data.y,
-        type: type
-      }];
-
-      var layout = {
-        showlegend: false
-      };
-
-      plotly.newPlot('dashboard_row_0_col_0', d, layout, {
-        displayModeBar: false
-      });
+      plotly.newPlot('chart', d);
     },
 
     drawPieChart: function(data) {
@@ -127,7 +99,7 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
         type: 'pie'
       }];
       var layout = {};
-      plotly.newPlot('dashboard_row_1_col_0', data, layout);
+      plotly.newPlot('chart', data, layout);
     },
 
     drawBubbleChart: function(d) {
@@ -144,7 +116,7 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
         title: '',
         showlegend: false
       };
-      plotly.newPlot('dashboard_row_1_col_1', data, layout);
+      plotly.newPlot('chart', data, layout);
     }
   }
 });
