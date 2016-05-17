@@ -22,67 +22,76 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+     * etc. depending on your default view engine) your home page.              *
+     *                                                                          *
+     * (Alternatively, remove this and add an `index.html` file in your         *
+     * `assets` directory)                                                      *
+     *                                                                          *
+     ***************************************************************************/
 
-	'/': {
-		view: 'test/main'
-	},
+    '/': {
+	view: 'test/main'
+    },
 
-	'/dashboard':{
-		view: 'test/dashboard'
-	},
+    '/dashboard':{
+	view: 'test/dashboard'
+    },
 
-	/*'get /getAll':{
-	  controller: 'TestController',
+    '/notification': {
+	view: 'test/notification'
+    },
+
+    'get /subscribe': {
+	controller: 'NotificationController',
+	action: 'subscribe'
+    },
+
+    /*'get /getAll':{
+      controller: 'TestController',
       action: 'getAll'
-	},
+      },
 
-	'get /listAllDataInCollection':{
-		controller: 'TestController',
-		action: 'listAllDataInCollection'
-	},
+      'get /listAllDataInCollection':{
+      controller: 'TestController',
+      action: 'listAllDataInCollection'
+      },
 
-	'get /listAllDatabases':{
-		controller: 'TestController',
-		action: 'listAllDatabases'
-	},
+      'get /listAllDatabases':{
+      controller: 'TestController',
+      action: 'listAllDatabases'
+      },
 
-	'get /listAllCollections':{
-		controller: 'TestController',
-		action: 'listAllCollections'
-	},*/
+      'get /listAllCollections':{
+      controller: 'TestController',
+      action: 'listAllCollections'
+      },*/
 
-	'get /prepareEditModel': {
-		controller: 'MysqltestController',
-		action: 'prepareEditModel'
-	},
+    'get /prepareEditModel': {
+	controller: 'MysqltestController',
+	action: 'prepareEditModel'
+    },
 
-	'get /queryData': {
-		controller: 'MysqltestController',
-		action: 'queryData'
-	},
+    'get /queryData': {
+	controller: 'MysqltestController',
+	action: 'queryData'
+    },
 
-	/*'get queryPreviewData': {
-		controller: 'MysqltestController',
-		action: 'queryPreviewData'
-	}*/
+    /*'get queryPreviewData': {
+      controller: 'MysqltestController',
+      action: 'queryPreviewData'
+      }*/
 
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the custom routes above, it   *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
+    /***************************************************************************
+     *                                                                          *
+     * Custom routes here...                                                    *
+     *                                                                          *
+     * If a request to a URL doesn't match any of the custom routes above, it   *
+     * is matched against Sails route blueprints. See `config/blueprints.js`    *
+     * for configuration options and examples.                                  *
+     *                                                                          *
+     ***************************************************************************/
 
 };
