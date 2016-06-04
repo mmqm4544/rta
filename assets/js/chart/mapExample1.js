@@ -1,7 +1,7 @@
 define(["jquery", "plotly", "jqueryui", "require"], function($, Plotly, jqueryui, require) {
   return {
     draw: function(renderTo) {
-      Plotly.d3.csv('./files/cities.csv', function(err, rows) {
+      Plotly.d3.csv('/files/cities.csv', function(err, rows) {
 
         function unpack(rows, key) {
           return rows.map(function(row) {

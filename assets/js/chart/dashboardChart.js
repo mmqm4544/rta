@@ -3,7 +3,7 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
     prepareData: function() {
       var me = this;
       $.ajax({
-        url: 'prepareEditModel',
+        url: '/prepareEditModel',
         success: function(data) {
           me.buildselect('text', data.fields.Text);
           me.buildselect('number', data.fields.Number);
@@ -46,7 +46,7 @@ define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui
       var number = $('#div_number').val();
       var aggregate = $('#div_aggregates').val();
       $.ajax({
-        url: 'queryData',
+        url: '/queryData',
         data: {
           'text': text,
           'number': number,

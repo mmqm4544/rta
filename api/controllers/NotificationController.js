@@ -5,6 +5,17 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var http = require('http');
+var fs = require('fs');
+
+var MySQLEvents = require('mysql-events');
+var dsn = {
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    port: '3306'
+};
+
 module.exports = {
 	
 
@@ -30,14 +41,29 @@ function sendSSE(req, res) {
 	'Connection': 'keep-alive'
     });
 
-    var id = (new Date()).toLocaleTimeString();
+    var mysqlEventWatcher = MySQLEvents(dsn);
+    var watcher = mysqlEventWatcher.add(
+	'mydb.aw_classic',
+	function (oldRow, newRow) {
+	    var id = (new Date()).toLocaleTimeString();
+	    var data = id + ": "+ "aw_classic" + " is changed.";
+	    constructSSE(res, id, data);
+	    //row inserted
+	    if (oldRow === null) {
+		//insert code goes here
+	    }
 
-    // Sends a SSE every 5 seconds on a single connection.
-    setInterval(function() {
-    	constructSSE(res, id, (new Date()).toLocaleTimeString());
-    }, 5000);
+	    //row deleted
+	    if (newRow === null) {
+		//delete code goes here
+	    }
 
-    constructSSE(res, id, (new Date()).toLocaleTimeString());
+	    //row updated
+	    if (oldRow !== null && newRow !== null) {
+		//update code goes here
+	    }
+	}
+    );
 }
 
 function constructSSE(res, id, data) {

@@ -1,7 +1,7 @@
 define(["jquery", "plotly", "jqueryui", "require"], function($, plotly, jqueryui, require) {
   return {
     draw: function(renderTo) {
-      var rawDataURL = './files/2016-weather-data-seattle.csv';
+      var rawDataURL = '/files/2016-weather-data-seattle.csv';
       var xField = 'Date';
       var yField = 'Mean_TemperatureC';
       var selectorOptions = {

@@ -67,6 +67,11 @@ require(["dashboard", "jquery", "jqueryui", "dashboardChart", "timeline",
     $(document).ready(function() {
       chart.prepareData();
       chart.bindDraw();
+      var source = new EventSource('/subscribe');
+      source.onmessage = function(e) {
+        console.log("table is changed; querying data...")
+        chart.queryData();
+      };
       $('#draw').button().height(35);
       timeline.draw('dashboard_row_2_col_0');
       barChartwithLinePlot.draw('dashboard_row_2_col_1');
