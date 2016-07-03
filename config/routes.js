@@ -49,8 +49,12 @@ module.exports.routes = {
 	action: 'subscribe'
     },
 
-    /*'get /getAll':{
-      controller: 'TestController',
+	'/bootstarpDashboard':{
+		view: 'test/bootstarpDashboard'
+	},
+
+	/*'get /getAll':{
+	  controller: 'TestController',
       action: 'getAll'
       },
 
